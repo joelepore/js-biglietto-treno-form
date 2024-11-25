@@ -1,24 +1,32 @@
 const inputFullName = document.getElementById('input-fullname');
 const inputKm = document.getElementById('input-km');
 const inputAge = document.getElementById('input-age');
+const btnSubmit = document.querySelector('button[type=submit]');
 
 const pricePerKm = 0.21;
 const discountUnderage = 20;
 const discountOver65 = 40;
 
-let totalPrice, totalDiscountedPrice, discountPrice;
-let discount = 0;
+btnSubmit.addEventListener('click', (e) => {
+  e.preventDefault();
 
-const totKm = parseInt(inputKm.value);
-const age = parseInt(inputAge.value);
+  const totKm = parseInt(inputKm.value);
+  const age = parseInt(inputAge.value);
 
-totalPrice = totKm * pricePerKm;
+  const totalPrice = calculateTotalPrice(totKm, age);
+})
 
-if (age < 18) {
-  discount = discountUnderage;
-} else if (age > 65) {
-  discount = discountOver65;
+function calculateTotalPrice(totKm, age) {
+  if (age < 18) {
+    discount = discountUnderage;
+  } else if (age > 65) {
+    discount = discountOver65;
+  } else {
+    discount = 1;
+  }
+  const totalPrice = totKm * pricePerKm;
+  const discountPrice = totalPrice * discount / 100;
+  const totalDiscountedPrice = totalPrice - discountPrice;
+
+  return totalDiscountedPrice;
 }
-
-discountPrice = totalPrice * discount / 100;
-totalDiscountedPrice = totalPrice - discountPrice;
