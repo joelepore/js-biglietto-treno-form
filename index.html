@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biglietto treno</title>
+  <!-- Font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -21,6 +23,45 @@
       <button type="submit">Genera</button>
       <button type="reset">Annulla</button>
     </form>
+
+    <div class="ticket-wrapper">
+      <header>
+        <p>Importo totale: <span id="total-price"></span></p>
+      </header>
+      <p>DETTAGLIO PASSEGGERI</p>
+      <div class="inner-ticket">
+        <div class="passenger-info">
+          <p>Nome passeggero <span id="passenger-age">(Adulto)</span></p>
+          <strong id="passenger-name">Giuseppe Lepore</strong>
+        </div>
+        <div class="ticket-info">
+          <div>
+            <p>Servizio</p>
+            <strong>STANDARD - Economy</strong>
+          </div>
+          <div>
+            <div>
+              <i class="fa-solid fa-train"></i>
+              <strong id="cabin-number">8</strong>
+            </div>
+            <div>
+              <i class="fa-solid fa-chair"></i>
+              <strong id="seat-number">1A</strong>
+            </div>
+          </div>
+          <div>
+            <div>
+              <p>Codice CP</p>
+              <strong id="cp-code">2389437</strong>
+            </div>
+            <div>
+              <p>Totale Km</p>
+              <strong id="tot-km">123</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>

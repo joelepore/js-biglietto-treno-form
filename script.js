@@ -1,7 +1,16 @@
+// Form
 const inputFullName = document.getElementById('input-fullname');
 const inputKm = document.getElementById('input-km');
 const inputAge = document.getElementById('input-age');
 const btnSubmit = document.querySelector('button[type=submit]');
+// Biglietto
+const ticketPrice = document.getElementById('total-price');
+const passengerAge = document.getElementById('passenger-age');
+const passengerName = document.getElementById('passenger-name');
+const cabinNumber = document.getElementById('cabin-number');
+const seatNumber = document.getElementById('seat-number');
+const cpCode = document.getElementById('cp-code');
+const totKm = document.getElementById('tot-km');
 
 const pricePerKm = 0.21;
 const discountUnderage = 20;
@@ -10,6 +19,7 @@ const discountOver65 = 40;
 btnSubmit.addEventListener('click', (e) => {
   e.preventDefault();
   // Prendo i dati di input
+  const fullName = inputFullName.value.trim();
   const totKm = parseInt(inputKm.value);
   const age = parseInt(inputAge.value);
   // Eseguo tutti i calcoli che occorrono
@@ -18,7 +28,17 @@ btnSubmit.addEventListener('click', (e) => {
   const seatNumber = generateSeatNumber();
   const cabinNumber = getRandomNumber(1, 10);
   // Visualizzo l'output
+  generateTicket(totalPrice, fullName, cabinNumber, seatNumber, cpCode, totKm);
 })
+
+function generateTicket(price, name, cabin, seat, cp, km) {
+  ticketPrice.innerText = price.toFixed(2);
+  passengerName.innerText = name;
+  cabinNumber.innerText = cabin;
+  seatNumber.innerText = seat;
+  cpCode.innerText = cp;
+  totKm.innerText = km;
+}
 
 // Funzione che restituisce il prezzo totale del biglietto prendendo in input il totale dei kilometri e l'eta' del passeggero
 function calculateTotalPrice(totKm, age) {
