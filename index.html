@@ -5,6 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biglietto treno</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
   <!-- Font awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
@@ -13,6 +18,7 @@
 <body>
   <div class="container">
     <form action="#">
+      <h1 class="mb-3">CALCOLA IL PREZZO DEL TUO BIGLIETTO</h1>
       <input type="text" name="fullname" id="input-fullname" placeholder="Nome e Cognome">
       <input type="number" name="km" id="input-km" placeholder="Totale Km">
       <select name="age" id="input-age">
@@ -21,35 +27,34 @@
         <option value="66">Over 65</option>
       </select>
       <button type="submit">Genera</button>
-      <button type="reset">Annulla</button>
+      <button class="d-none" type="reset">Annulla</button>
     </form>
 
-    <div class="ticket-wrapper">
+    <div class="ticket-wrapper d-none">
       <header>
-        <p>Importo totale: <span id="total-price"></span></p>
+        <p>Importo totale: <b id="total-price"></b><b> €</b></p>
       </header>
-      <p>DETTAGLIO PASSEGGERI</p>
       <div class="inner-ticket">
-        <div class="passenger-info">
-          <p>Nome passeggero <span id="passenger-age">(Adulto)</span></p>
+        <div class="passenger-info p-1">
+          <p>Nome passeggero (<span id="passenger-age">(Adulto)</span>)</p>
           <strong id="passenger-name">Giuseppe Lepore</strong>
         </div>
-        <div class="ticket-info">
+        <div class="ticket-info gap-1 p-1">
           <div>
             <p>Servizio</p>
             <strong>STANDARD - Economy</strong>
           </div>
-          <div>
-            <div>
+          <div class="d-flex gap-1">
+            <div class="d-flex flex-col justify-between items-center">
               <i class="fa-solid fa-train"></i>
-              <strong id="cabin-number">8</strong>
+              <strong id="cabin-number" class="mt-02">8</strong>
             </div>
-            <div>
+            <div class="d-flex flex-col justify-between items-center">
               <i class="fa-solid fa-chair"></i>
-              <strong id="seat-number">1A</strong>
+              <strong id="seat-number" class="mt-01">1A</strong>
             </div>
           </div>
-          <div>
+          <div class="d-flex gap-1">
             <div>
               <p>Codice CP</p>
               <strong id="cp-code">2389437</strong>
@@ -59,6 +64,14 @@
               <strong id="tot-km">123</strong>
             </div>
           </div>
+        </div>
+        <div class="disclaimer p-1"><i class="fa-solid fa-circle-info"></i><b>Economy: </b>Biglietto non modificabile e
+          non rimborsabile. Soggetto a
+          disponibilita’ posti.</div>
+        <div class="qr-code">
+
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"
+            alt="qr-code">
         </div>
       </div>
     </div>

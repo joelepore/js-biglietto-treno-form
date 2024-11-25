@@ -3,6 +3,7 @@ const inputFullName = document.getElementById('input-fullname');
 const inputKm = document.getElementById('input-km');
 const inputAge = document.getElementById('input-age');
 const btnSubmit = document.querySelector('button[type=submit]');
+const btnReset = document.querySelector('button[type=reset]');
 // Biglietto
 const ticketPrice = document.getElementById('total-price');
 const passengerAge = document.getElementById('passenger-age');
@@ -11,10 +12,12 @@ const cabinNumber = document.getElementById('cabin-number');
 const seatNumber = document.getElementById('seat-number');
 const cpCode = document.getElementById('cp-code');
 const totKm = document.getElementById('tot-km');
+const ticket = document.querySelector('.ticket-wrapper');
 
 const pricePerKm = 0.21;
 const discountUnderage = 20;
 const discountOver65 = 40;
+let ageRange = '';
 
 btnSubmit.addEventListener('click', (e) => {
   e.preventDefault();
@@ -31,23 +34,35 @@ btnSubmit.addEventListener('click', (e) => {
   generateTicket(totalPrice, fullName, cabinNumber, seatNumber, cpCode, totKm);
 })
 
+btnReset.addEventListener('click', () => {
+  ticket.classList.add('d-none');
+  btnReset.classList.add('d-none');
+});
+
 function generateTicket(price, name, cabin, seat, cp, km) {
   ticketPrice.innerText = price.toFixed(2);
   passengerName.innerText = name;
+  passengerAge.innerText = ageRange;
   cabinNumber.innerText = cabin;
   seatNumber.innerText = seat;
   cpCode.innerText = cp;
   totKm.innerText = km;
+
+  ticket.classList.remove('d-none');
+  btnReset.classList.remove('d-none');
 }
 
 // Funzione che restituisce il prezzo totale del biglietto prendendo in input il totale dei kilometri e l'eta' del passeggero
 function calculateTotalPrice(totKm, age) {
   if (age < 18) {
     discount = discountUnderage;
+    ageRange = 'Minorenne';
   } else if (age > 65) {
     discount = discountOver65;
+    ageRange = 'Over 65';
   } else {
     discount = 1;
+    ageRange = 'Adulto';
   }
   const totalPrice = totKm * pricePerKm;
   const discountPrice = totalPrice * discount / 100;
