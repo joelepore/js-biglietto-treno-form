@@ -16,6 +16,7 @@ btnSubmit.addEventListener('click', (e) => {
   const totalPrice = calculateTotalPrice(totKm, age);
   const cpCode = generateCPCode();
   const seatNumber = generateSeatNumber();
+  const cabinNumber = getRandomNumber(1, 10);
 })
 
 function calculateTotalPrice(totKm, age) {
