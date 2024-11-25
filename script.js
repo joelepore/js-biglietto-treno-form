@@ -14,6 +14,8 @@ btnSubmit.addEventListener('click', (e) => {
   const age = parseInt(inputAge.value);
 
   const totalPrice = calculateTotalPrice(totKm, age);
+  const cpCode = generateCPCode();
+  const seatNumber = generateSeatNumber();
 })
 
 function calculateTotalPrice(totKm, age) {
@@ -29,4 +31,17 @@ function calculateTotalPrice(totKm, age) {
   const totalDiscountedPrice = totalPrice - discountPrice;
 
   return totalDiscountedPrice;
+}
+
+function generateCPCode() {
+  return Math.floor(Math.random() * 10000) + 90000;
+}
+
+function generateSeatNumber() {
+  const seats = ['A', 'B', 'C', 'D', 'E'];
+  return `${getRandomNumber(1, 6)}${seats[getRandomNumber(0, seats.length - 1)]}`;
+}
+
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
