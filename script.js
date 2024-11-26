@@ -61,7 +61,7 @@ function calculateTotalPrice(totKm, age) {
     discount = discountOver65;
     ageRange = 'Over 65';
   } else {
-    discount = 1;
+    discount = 0;
     ageRange = 'Adulto';
   }
   const totalPrice = totKm * pricePerKm;
